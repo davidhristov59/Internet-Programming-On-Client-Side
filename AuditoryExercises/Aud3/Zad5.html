@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<!--    Да се напише JavaScript функција која ќе го избрише првото-->
+<!--    појавување на даден стринг searchstr во стринг str.-->
+
+</head>
+<body>
+
+<script>
+
+
+  function removeFirstOccurence(str, searchStr){
+
+      let index = str.indexOf(searchStr);
+
+      if(index === -1){ //ako ne sme go nasle substringot(searchStr), go naogame orginalniot string
+          return str;
+      }
+
+      return str.slice(0,index) + str.slice(index + searchStr.length)
+  }
+
+  console.log(removeFirstOccurence("The quick brown dog jumps over the lazy dog", 'the'))
+
+</script>
+
+</body>
+</html>

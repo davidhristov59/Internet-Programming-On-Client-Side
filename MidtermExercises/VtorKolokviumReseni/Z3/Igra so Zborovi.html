@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Igra so zborovi</title>
+
+<script>
+
+  let dictionary = '["jac", "ти", "то", "таа", "тоа", "ние", "вие", "тие"]';
+  let letters = ['А','Б','В','Г','Д','Ѓ','Е','Ж','З','Ѕ','И','Ј','К','Л','Љ','М','Н','Њ','О',
+      'П','Р','С','Т','Ќ','У','Ф','Х','Ц','Ч','Џ','Ш']
+
+  let data = JSON.parse(dictionary);
+
+  let counter = 0;
+  let bukvi = "";
+
+  window.onload = function (){
+
+      bukvi = randomLetters(letters); //generirani random bukvi
+      mesto_bukvi = document.getElementById("here");
+      mesto_bukvi.innerHTML = bukvi; //na toa mesto gore ke gi stavam bukvite izgenerirani
+      interval = setInterval(clock, 1000); //1 minuta da otcukuva - 60s
+        //se povikuva clock funkcijata bez ()
+
+  }
+
+  function randomLetters(array){ //ke izgenerira random bukvi
+
+      let string = "";
+      for (let i = 0; i < 10; i++) {
+          string += array[Math.floor(Math.random() * 21)] + " "
+      }
+
+      return string;
+  }
+
+
+  function check(){
+
+      let pogodok = document.getElementById("pogodok");
+      let zbor = document.getElementById("choice");
+      let words = zbor.value.toUpperCase(); //gi pravi golemi bukvite
+      let word = zbor.value.toLowerCase();
+
+      for (let i = 0; i < words.length; i++) {
+          //izmini ja sekoja bukva
+          if(!words.includes(bukvi.charAt(i))){ //ako zborot NE se sostoi od tie izgeneriranite random bukvi
+              alert("Smeete samo od gore ponudenite bukvi");
+              return;
+          }
+      }
+
+      for (let j = 0; j < data.length; j++) { //listam niz dadenite zborovi
+          if(word === data[j]){
+              counter++;
+              pogodok.innerHTML = counter;
+              zbor.value = ""
+          }
+      }
+
+  }
+
+  function clock(){
+
+      let time = document.getElementById("vreme");
+      time.innerHTML -= 1; //celo vreme odzemaj -1
+      if(time.innerHTML === "0"){ //koga ke dostignes 0
+
+          let btn = document.getElementById("kopce");
+          let input = document.getElementById("choice");
+
+          btn.disabled = true;
+          input.disabled = true;
+
+          clearInterval(interval);
+      }
+  }
+
+
+</script>
+
+</head>
+
+<body>
+<p id="here" style="display: inline"> </p>
+<div>
+    <input type="text" id="choice">
+    <button id="kopce" onclick="check()">Провери</button>
+</div>
+<p>Преостанато време: <span id="vreme">60</span> секунди. Погодоци <span id="pogodok">0</span>.</p>
+
+</body>
+</html>

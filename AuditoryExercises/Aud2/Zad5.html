@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+  function change_color(){
+
+      console.log("Pri hover");
+      var strong_elements = document.getElementsByTagName("strong");
+
+      for (let i = 0; i < strong_elements.length; i++) { //gi izminuvame site strong elementi - mora so for
+          strong_elements[i].style.color="green";
+      }
+  }
+
+  function change_back(){
+
+      console.log("Posle hover");
+      var strong_elements = document.getElementsByTagName("strong");
+      for (let i = 0; i < strong_elements.length; i++) {
+          strong_elements[i].style.color = "black";
+      }
+
+  }
+
+</script>
+
+
+<p>[<a href="#" onmouseover="change_color()" onmouseout="change_back()">On mouse over here bold words of the following paragraph w ill be highlighted</a>]</p> <p><strong>We</strong> have just started <strong>this</strong> section for the users (<strong>beginner</strong> to intermediate) who
+    <strong>want</strong> to work with <strong> various</strong> JavaScript <strong>problems </strong> and write scripts online to <strong>test</strong> their JavaScript <strong>ski ll</strong>.</p>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+</head>
+<body>
+
+<div>
+    <p id="num">Current number: </p>
+</div>
+
+</body>
+
+<script>
+    data = '[{"id":1,"numbers":[80,72,49,1,34,81,36,2,13,9,54,93,29,18,52]},{"id":2,"numbers":[68,85,24,7,32,12,88,57,35,11,44,58,91,21,22]},{"id":3,"numbers":[16,5,75,64,28,70,50,55,40,77,23,48,98,67,73]}]';
+    data = JSON.parse(data);
+
+    // console.log(data);
+
+    data.forEach(element => add_elem(element));
+
+    function add_elem(ticket){
+
+        //pravam tabela prvo
+        let table = document.createElement('table');
+
+        table['id'] = ticket.id;
+        table['border'] = 'solid';
+
+        for (let i = 0; i < 3; i++) { //3 redici
+            //redica da napravam
+            let newRow = table.insertRow();
+            for (let j = 0; j < 5; j++) { //5 koloni  - da gi vmetneme elementite vo tabelata
+                let newCell = newRow.insertCell();    //kelija mi treba
+                newCell.innerText = ticket.numbers[5 * i + j];
+
+            }
+        }
+
+        document.body.appendChild(table); //stavi ja tabelata
+        document.body.appendChild(document.createElement('br')); //za da gi odelime - break
+
+    }
+
+    //da pocne odma na pocetok, da ne cekame 5 sekundi
+    let num = parseInt(Math.random() * 100)
+    document.getElementById('num').innerText = "Current number: " + num;
+
+    let interval = setInterval(
+        function (){
+            let num = parseInt(Math.random() * 100)
+            document.getElementById('num').innerText = "Current number: " + num;
+
+            document.querySelectorAll('table td').forEach(cell => {
+                if(parseInt(cell.innerText) === num){
+                    cell.style.backgroundColor = 'green';
+                }
+            })
+        },
+        5000 //5 sekundi - posle 5 sekundi se menuva brojot
+    )
+
+</script>
+
+</html>

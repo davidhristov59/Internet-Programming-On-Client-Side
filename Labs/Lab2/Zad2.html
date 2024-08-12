@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca2</title>
+
+    <script>
+
+        let imageList = [
+            'https://designmodo.com/wp-content/uploads/2014/07/free-photos.jpg',
+            'https://wallup.net/wp-content/uploads/2017/03/28/401266-landscape-road-forest-748x421.jpg',
+            'https://farm5.staticflickr.com/4060/4567292488_5d3f4b05f6_z.jpg']
+
+        function changePicture(){
+
+            let element = document.getElementById("changeImg");
+
+            element.src = imageList[Math.floor(Math.random() * imageList.length)]
+            // It randomly selects an image URL from imageList by generating a random index
+            // (Math.floor(Math.random() * imageList.length)) and sets the src attribute of the image
+            // element to display the selected image.
+
+
+            //For example, Math.random() might produce values like 0.235, 0.873, 0.041, etc. each time it's called.
+            // Math.floor(3.9) returns 3, Math.floor(7.8) returns 7, etc.
+            // It's used here to convert the result of Math.random() (which generates a decimal between 0 and 1) into an integer index.
+        }
+
+    </script>
+
+</head>
+<body>
+
+<img src="" id="changeImg"/> <!--This image tag has an empty src attribute initially and an ID of "changeImg". It's where the images will be displayed.-->
+<button onclick="changePicture()">Change picture</button>
+
+</body>
+</html>

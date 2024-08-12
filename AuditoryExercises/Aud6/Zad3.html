@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script>
+
+    function insert(str){
+
+        let result = [];
+
+            if(str === undefined) {
+                return null;
+            }
+            if(str.length < 2){
+                return str;
+            }
+
+        for (let i = 0; i < str.length; i++) { //pocni od 1 bidejki vise dodadovme
+
+            //gi parsira za da bide siguren deka se broevi
+            if(parseInt(str[i-1] ) % 2 === 0 && parseInt(str[i]) % 2 === 0 ){ //ako prethodniot broj e paren broj i segasniot broj e paren odvoi gi
+                result.push("-"); //dodadi go znakot megju niv
+            }
+            result.push(str[i]); //dodadi go tekovniot character vo stringot
+        }
+
+        return result.join('');
+  }
+
+    console.log(insert("025468"));
+
+</script>
+<body>
+
+
+
+</body>
+</html>

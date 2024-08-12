@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<script>
+
+  function changeStyle(){
+    // let element = document.querySelector("body p#text");
+    let element = document.getElementById("text");
+    element.style.fontSize = "24px";
+    element.style.color = "red";
+    element.style.fontFamily = "Sans-Serif";
+    element.style.fontWeight= "Bold";
+  }
+
+
+</script>
+
+<p id="text">
+  Change my style
+</p>
+<div>
+  <button type="button" onClick="changeStyle()">Style</button>
+  <!--na klik da se smeni textot-->
+</div>
+
+</body>
+</html>

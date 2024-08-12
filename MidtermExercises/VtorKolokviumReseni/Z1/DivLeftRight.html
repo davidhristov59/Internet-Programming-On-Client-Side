@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="<" onclick="moveLeft()">
+<input type="button" value=">" onclick="moveRight()">
+
+<script>
+
+    let data = '[{"background-color":"red", "width":"100px", "height":"100px"}, {"background-color":"green", "width":"50px", "height":"100px"}, {"background-color":"blue", "width":"100px", "height":"50px"}]';
+
+    data = JSON.parse(data); //isparsiraj od stringovi vo objekti
+
+    let element = document.createElement("div"); //kreirame div element - potocno kvadratot crven
+
+    let index = 0;
+
+    element['left'] = 0; //go setiram na 0
+    displayElement(data[0]); //crveniot kvadrat, go zimam 0-tiot index potocno prviot element toa e crveniot kvadrat
+    document.body.appendChild(element);// BITEN CEKOR - MORA DA SE DODADE ELEMENTOT VO BODY-TO
+
+    function displayElement(index){
+
+        //gi setiram inicijalnite stilovi za div-ot
+        //imam 2 objekta
+
+        element.style.backgroundColor = index['background-color'];
+        element.style.height = index['height'];
+        element.style.width = index['width'];
+        element.style.position = 'absolute';
+    }
+
+    //----------------------------------------------------------------------------------------------
+
+
+    // function moveLeft(){
+    //
+    //
+    //     inter = setInterval(function move(){
+    //
+    //         var element = document.getElementsByTagName("div")[0];
+    //         var position = -100;
+    //
+    //         element['left'] -= 10;
+    //         element.style.left = element['left'] + "px";
+    //
+    //         /*
+    //         They use setInterval to continuously update the element position.
+    //         When the element reaches a certain position (-150 or 1000), it clears the interval and updates the index for the next element to be displayed.
+    //         Then, it starts a secondary animation to finalize the positioning of the element to the edge of the screen.
+    //          */
+    //
+    //         if(element['left'] < position){
+    //
+    //             clearInterval(inter)
+    //             index++;
+    //
+    //             if(index >= data.length){
+    //
+    //              index = 0;
+    //             }
+    //
+    //             element['left'] = 100;
+    //             displayElement(data[index])
+    //
+    //             inter2 = setInterval(function(){
+    //
+    //               element['left'] -= 10;
+    //               element.style.left = element['left'] + "px";
+    //
+    //               if(element['left'] < 0){
+    //                   clearInterval(inter2)
+    //               }
+    //
+    //             }, 20)
+    //         }
+    //
+    //         }
+    //
+    //     ,100 )
+    //
+    // }
+    //
+    //
+    // function moveRight(){
+    //
+    //     inter = setInterval(function move(){
+    //
+    //         var element = document.getElementsByTagName("div")[0];
+    //         var position = 1000;
+    //
+    //         element['left'] += 10;
+    //         element.style.left = element['left'] + "px";
+    //
+    //         if(element['left'] > 1000){
+    //
+    //             clearInterval(inter);
+    //             index--;
+    //
+    //             if(index < 0){
+    //                 index = data.length - 1;
+    //             }
+    //
+    //             element['left'] = -100;
+    //             displayElement(data[index]);
+    //
+    //             inter2 = setInterval(function (){
+    //
+    //                 element['left'] +=10;
+    //                 element.style.left = element['left'] + "px";
+    //
+    //                 if(element['left'] > 0){
+    //                     clearInterval(inter2)
+    //                 }
+    //             }, 100)
+    //         }
+    //     }
+    //
+    //     ,20)
+    //
+    // }
+
+
+</script>
+
+</body>
+</html>

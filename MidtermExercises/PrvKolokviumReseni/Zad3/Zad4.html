@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--  Да се направи веб страна каде што се внесува username,id,width,height,color(red,yellow,green,blue) и копче Add.-->
+  <!--  Доколку не се пополнети сите полиња треба да не се дозволи внесување на податоците и се фрла грешка а полињата не се ресетираат.-->
+  <!--  Треба да се провери дали id се состои од мали букви само(не смее бројки, а специјални знаци смее, но не мора).-->
+  <!--  При внесување нов корисник треба да се провери дали id-to е исто, доколку е исто само треба да се апдејтираат другите податоци во-->
+  <!--  веќе постоечкиот корисник.Вкупната цена се пресметува како pixel * 0.5. Вкупниот број на пиксели се добива како width*height. Ако бојата-->
+  <!--  е црвена треба да се додаде 1000 на постоечката цена, во спротивно не се додава ништо.-->
+  <!--  Должината и висината мора да се ненулти вредности и не смеат да бидат повеќе од 500.-->
+  <!--  При додавање се додава и копче Sell, кое што при кликнување на него се брише елементот и при тоа се ажурира вкупната сума на продадени-->
+  <!--  картички.-->
+  <meta charset="UTF-8">
+  <title>User_cards</title>
+
+  <style>
+
+    label{
+      width: 150px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+  </style>
+
+  <script>
+
+    var totalSold = 0;
+
+    function checkID(id){
+
+      let upperCaseRegEx = /[A-Z]/;
+      let digitRegEx = /\d/; //ova e za brojki
+
+      return !(upperCaseRegEx.test(id)) && !(digitRegEx.test(id));
+
+    }
+
+    function add(){
+
+      let username = document.getElementById("username").value;
+      let id = document.getElementById("ID").value;
+      let width = document.getElementById("width").value;
+      let height = document.getElementById("height").value;
+      let color = document.getElementById("color").value;
+
+      if(username === "" || id === "" || width === "" || height === "" || color === ""){
+        alert("Popolnete gi site polinja!");
+        return
+      }
+      else if(checkID(id)){
+        alert("Vnesovte pogresno ID");
+      }
+
+      let parsedHeight = parseInt(height);
+      let parsedWidth = parseInt(width);
+      let totalSum = Math.floor((parsedHeight * parsedWidth) * 0.5);
+
+      if(color.value === 'red'){
+        totalSum += 1000;
+      }
+
+      let arrayElements = document.getElementsByClassName("elements");
+
+      for (let i = 0; i < arrayElements.length; i++) {
+        //pri vnes na korisnik terba da proverime dali ID-to e isto
+        if (arrayElements[i].children[0].children[0].innerHTML === id.value) {
+          arrayElements[i].children[1].children[0].innerHTML = width.value;
+          arrayElements[i].children[2].children[0].innerHTML = height.value;
+          arrayElements[i].children[3].children[0].innerHTML = color.value
+          arrayElements[i].children[4].children[0].innerHTML = totalSum.toString();
+          arrayElements[i].style.background = color.value
+          arrayElements[i].style.width = width.value + "px"
+          arrayElements[i].style.height = height.value + "px"
+        }
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<h1>User Cards</h1>
+
+<label>Username</label> <input type="text" id="username"> <br>
+<label>ID</label> <input type="text" id="ID"> <br>
+<label>Width</label> <input type="text" id="width"> <span> px </span> <br>
+<label>Height</label> <input type="text" id="height"> <span> px</span> <br>
+<label>Color</label>
+<select id="color">
+  <option value="red">red</option>
+  <option value="yellow">yellow</option>
+  <option value="green">green</option>
+  <option value="blue">blue</option>
+</select>
+<br>
+<button type="button" onclick="add()" value="Add">Add</button>
+
+<p>Вкупно продадени <span id="sold">0</span></p>
+
+<section id="Addhere"> </section>
+
+
+</body>
+</html>

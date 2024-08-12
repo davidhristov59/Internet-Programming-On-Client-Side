@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>About Me</title>
+
+</head>
+
+<body>
+<h1>About Me</h1>
+<ul>
+  <li>Name: <span id="name"></span>
+  <li>Index: <span id="index"></span>
+  <li>Hometown: <span id="hometown"></span>
+</ul>
+
+<script>
+
+  body = document.getElementsByTagName("body")[0]; //mora na 0ta pozicija bidejki getElementsByTagName vraka lista
+  body.style.fontFamily = "Arial";
+
+  let name = prompt("Enter your name");
+  let index = prompt("Enter your index");
+  let hometown = prompt("Enter your hometown");
+
+  document.getElementById("name").innerHTML = name;
+  document.getElementById("index").innerHTML = index;
+  document.getElementById("hometown").innerHTML = hometown;
+
+  let allListItems = document.getElementsByTagName("li");
+  for (let i = 0; i < allListItems.length; i++) {
+    allListItems[i].style.color = "red";
+  }
+
+</script>
+
+</body>
+</html>
+

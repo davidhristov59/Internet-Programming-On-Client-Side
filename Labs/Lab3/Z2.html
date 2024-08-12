@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script>
+
+    function removeElement(arr, element){
+
+        for(let i=0;i < arr.length;i++) {
+          if (arr[i] === element) {
+            arr.splice(i, 1); //brise 1 element na segasniot index i od nizata
+            i--;
+          }
+        }
+        return arr;
+    }
+
+    let nums = [2,5,9,6];
+    console.log(removeElement(nums,5));
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

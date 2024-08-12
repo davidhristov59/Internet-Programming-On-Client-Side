@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <title></title>
+
+  <style>
+
+    label{
+      width: 100px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    #btn{
+      width: 200px;
+    }
+
+    table,td,th{
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+
+  </style>
+
+  <script>
+    function add(){
+
+      let author = document.getElementById("author").value;
+      let project = document.getElementById("project").value;
+      let cost = document.getElementById("cost").value;
+
+      if(author === "" || project === "" || cost === ""){
+        alert("Site polinja da se popolneti")
+      }
+
+      // document.getElementById("tbody").innerHTML += "<tr><td>" + name + ""</td><td>"
+      // table.innerHTML += "<tr><td>" + name + "</td><td>" + price + "</td><td>" + code + "</td><td>" + price + "</td><td><button class='sold' onclick='remove(this)'>sold</button></td></tr>"
+
+      //BITNO!!!!!!!
+      //---------------------------------------------------------
+      let tableRef = document.getElementById("tbody"); //KREAIRAM REFERENCA KON TABELATA
+      let row = tableRef.insertRow(tableRef.rows.length); //INSERTNUVAM REDICI VO TABELATA
+
+      let cell0 = row.insertCell(0); //insert a cell in the row at index 0
+      let cell1 = row.insertCell(1);
+      let cell2 = row.insertCell(2);
+
+      cell0.innerHTML = author;
+      cell1.innerHTML = project;
+      cell2.innerHTML = cost;
+
+      //------------------------------------------------------------
+    }
+
+  </script>
+
+</head>
+<body>
+
+<h1>Project details</h1>
+
+<div>
+
+  <label> Author</label> <input type="text" id="author"> <br>
+  <label> Project</label> <input type="text" id="project"> <br>
+  <label> Cost</label> <input type="text" id="cost"> <br>
+
+  <input type="button" id="btn" value="Add" onclick="add()"> <br>
+
+  <table id="projects">
+
+    <thead>
+    <th>Author</th>
+    <th>Projects</th>
+    <th>Cost</th>
+    </thead>
+
+    <tbody id="tbody"></tbody>
+
+  </table>
+
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+<head>
+  <script>
+    function bgChange(bg) {
+      document.body.style.background = bg; //smeni ja vo taa boja
+    }
+
+  </script>
+</head>
+<body>
+<h2>Change background color</h2><p>Mouse over the squares!</p>
+<table style="width:300px;height:100px">
+  <tr>
+    <td onmouseover="bgChange(this.style.backgroundColor)"></td> <!--koga ke hoverneme so mausot nad so this pristapi do samiot element, do negoviot stil -->
+        onmouseout="bgChange('transparent')" <!-- smeni ja vo taa boja -->
+        style="background-color:Khaki">
+    <td onmouseover="bgChange(this.style.backgroundColor)"
+        onmouseout="bgChange('transparent')"
+        style="background-color:PaleGreen">
+    </td>
+    <td onmouseover="bgChange(this.style.backgroundColor)"
+        onmouseout="bgChange('transparent')"
+      style="color:black">
+    </td> </tr>
+</table>
+</body>
+</html>

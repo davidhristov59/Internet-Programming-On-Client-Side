@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form>
+  <select id="mySelect">
+    <option>Red</option>
+    <option>Green</option>
+    <option>Blue</option>
+    <option>White</option>
+  </select>
+</form>
+
+<button onclick="get_options()">Get options</button>
+
+
+<script>
+
+    function get_options(color){ //izbroj gi opciite i isprintaj gi
+
+        var lista = document.getElementById("mySelect");
+
+        for (let i = 0; i < lista.options.length; i++) {
+            console.log(lista.options[i].length);
+        }
+        console.log(lista.options.length);
+    }
+
+
+</script>
+
+</body>
+</html>

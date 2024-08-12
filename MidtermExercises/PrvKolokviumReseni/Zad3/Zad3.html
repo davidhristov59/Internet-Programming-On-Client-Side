@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        label{
+            width: 150px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        table{
+            border-collapse: collapse;
+        }
+
+        td,th{
+            border: 1px solid black;
+        }
+
+    </style>
+
+    <script>
+
+        function check_EMBG(embg){
+
+            //do ovoj moment embg e string
+            if(embg.length !== 13){ //da proverime prvo dali e embg
+                return false;
+            }
+
+            embg = parseInt(embg); //go parsirame vo Int
+            //sega e cel broj
+            if(isNaN(embg)){ //ne pominalo parsiranjeto i ne e broj
+               return false;
+            }
+
+            var godina = parseInt((embg / 1000000) % 1000);
+            var mesec = parseInt((embg / 1000000000) % 100);
+            var den = parseInt((embg / 100000000000));
+
+            // console.log(godina)
+            // console.log(mesec)
+            // console.log(den)
+
+            if(den >= 1 && den <=31 && mesec >= 1 && mesec <= 12 && godina >= 900){
+                return true;
+            }
+
+            return false;
+
+        }
+
+        function remove(element){
+            //element e kopceto sto go klikame
+            //da pristapime do redicata kaj sto ima kopce i da ja izbrisam
+            //ke ja pristapam redicata kaj sto se naoga kopceto
+            var redica= element.parentNode.parentNode.style.background = 'yellow';
+            redica.parentNode.removeChild(redica);
+        }
+
+        function add(){
+            let name = document.getElementById("name").value;
+            let surname = document.getElementById("surname").value;
+            let embg = document.getElementById("embg").value;
+
+            if(name === "" || surname === "" || embg === ""){
+                alert("Ne gi vnesovte site polinja");
+                return;
+            }
+
+            //da se proveri maticniot broj - da se proveri kako e vnesen maticen broj
+            //11 12 003 45 00 62
+
+            // var datum = check_EMBG(embg);
+            // if(datum){
+            //     alert("Ne vnesovte validni podatoci. Obidete se povtorno!");
+            //     return;
+            // }
+
+            var table = document.getElementById("tabela");
+            //da dodademe element votabela
+
+            var date = check_EMBG(embg);
+            if(!date) {
+                table.innerHTML += "<tr><td>" + name + "</td><td>" + surname + "</td><td>" + embg + "</td><td><button onclick='remove(this)'>Remove</button> </td><tr>";
+                table.style.background = 'green';
+            }
+            else {
+                alert("Ne vnesovte validni pdoatoci");
+                return;
+            }
+            }
+
+    </script>
+
+</head>
+<body>
+
+<label>Name</label> <input type="text" id="name"> <br>
+<label>Surname</label> <input type="text" id="surname"> <br>
+<label>EMBG</label> <input type="text" id="embg"> <br
+<button onclick="add()" value="Add">Add</button>
+
+<table id="tabela">
+    <tr>
+        <td>Name</td>
+        <td>Surname</td>
+        <td>EMBG</td>
+    </tr>
+
+</table>
+
+
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body{
+            width: 800px;
+            height: 800px;
+        }
+    </style>
+</head>
+
+
+<script>
+
+    let json = '[{"color":"red", "size":"50"},{"color":"blue", "size":"40"},{"color":"orange", "size":"30"},{"color":"green", "size":"20"},{"color":"yellow", "size":"50"}]';
+    let data = JSON.parse(json);
+    arrayDivs = []; //tuka ke gi cuvame div-ovite
+
+
+    window.onload = function (){
+
+        for (let i = 0; i < data.length; i++) {
+
+            element = document.createElement("div");
+
+            element.style.backgroundColor = data[i].color; //ja stava bojata na kvadratot spored dadeniot property na index i, ptoocno za sekoj kvadrat taa i taa boja
+            element.style.height = data[i].size + "px"; //ja definira visinata na kvadratot spored size property i dodava px za da bide vistinska vrednost
+            element.style.width = data[i].size + "px"; //ja definira sirinata na kvadratot spored size property - isto i width
+
+            element.style.position = 'absolute';
+            //dodavam px za da da go napravam string brojot izgeneriran
+            element.style.left = (Math.floor(Math.random() * 800) + 1) + "px"; //random gi pozicionira elementite na ekranot
+            element.style.top = (Math.floor(Math.random() * 650) + 1) + "px";
+            element.setAttribute("onclick", "growDiv(this)");
+            //Assigns an onclick event to the square element, specifying that when the element is clicked, the growDiv() function should be called with this (the clicked element) as an argument.
+            element.style.opacity = 1;
+
+            arrayDivs[i] = element;
+
+            document.body.appendChild(element);
+
+        }
+    }
+
+   function animationGrow(element){ //increases the width and the height od the div until it reaches a certain size(125 x 125)
+
+       divWidth = Number(element.style.width.split("px")[0]);
+       divHeight = Number(element.style.height.split("px")[0]);
+
+       //biten cekor
+           element.style.width = divWidth + 1 + "px";
+           element.style.height = divHeight + 1 + "px";
+
+       if(divWidth >= 125 && divHeight >= 125){ //koa ke stigne do 125 pixeli i width i height kvadratot togas ke se podeli na 4 dela
+
+           clearInterval(interval); //go brise intervalot
+           create4Divs(element); //povikuva ovaa funkcija za da gi napravi 4 mali kvadratcinja
+           element.remove(); //go brise kliknatiot div- ptoocno golemiot kvadrat
+
+       }
+
+   }
+
+   function growDiv(div){
+
+       interval = setInterval(animationGrow,10,div);
+
+   }
+
+    function create4Divs(div) { //This function creates four smaller squares around the clicked div.
+
+        for(let i=0;i<4;i++)
+        {
+            leftPos = ""
+            topPos = ""
+            divElement = document.createElement("div")
+            divElement.style.backgroundColor = div.style.backgroundColor //It sets the background color to match the clicked div's color
+            divElement.style.position = "absolute"
+            //malite kvadratcinja gi pravi da bidat 20px x 20px
+            divElement.style.width = "20px"
+            divElement.style.height = "20px"
+            divElement.setAttribute("onclick","growDiv(this)") //na klik na malite kvadratcinja da se povika growDiv, ptoocno da rastat i tie
+            if(i===0) //i === 0 positions the first div to the top-left of the clicked div.
+            {
+                leftPos = Number(div.style.left.split("px")[0]) - 45
+                topPos = Number(div.style.top.split("px")[0]) + 45
+                divElement.style.left = leftPos + "px"
+                divElement.style.top = topPos + "px"
+            }
+            else if(i===1)
+            {
+                leftPos = Number(div.style.left.split("px")[0]) - 45
+                topPos = Number(div.style.top.split("px")[0]) + 70
+                divElement.style.left = leftPos + "px"
+                divElement.style.top = topPos + "px"
+            }
+            else if(i===2)
+            {
+                leftPos = Number(div.style.left.split("px")[0]) - 20
+                topPos = Number(div.style.top.split("px")[0]) + 45
+                divElement.style.left = leftPos + "px"
+                divElement.style.top = topPos + "px"
+            }
+            else if(i===3)
+            {
+                leftPos = Number(div.style.left.split("px")[0]) - 20
+                topPos = Number(div.style.top.split("px")[0]) + 70
+                divElement.style.left = leftPos + "px"
+                divElement.style.top = topPos + "px"
+            }
+            document.body.append(divElement)
+        }
+
+    }
+
+
+
+</script>
+
+<body>
+
+</body>
+</html>

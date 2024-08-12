@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <script>
+
+      // Name/value pairs --> "name" : "value:"
+
+    var text = '{ "employees" : [' +
+            '{ "firstName":"John" , "lastName":"Doe" },' + //0
+            '{ "firstName":"Anna" , "lastName":"Smith" },'  //1
+            + '{ "firstName":"Peter" , "lastName":"Jones" } ]}'; //2
+
+    var obj = JSON.parse(text) //OD STRING PARSIRA VO OBJEKTI
+
+    var fullName = obj.employees[1].firstName + " " + obj.employees[1].lastName;
+
+    //vo Console
+    // obj.employees[1].firstName ==> Anna
+    // obj.employees[0]  ==> "firstName":"John" , "lastName":"Doe"
+    //JSON.stringify(obj.employees[1]) --> ke gi dae vo String pretvoreni
+
+  </script>
+
+</head>
+<body>
+
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<ul> <li>The</li>
+  <li>Test</li> </ul>
+<ul>
+  <li>Is</li>
+  <li>Passed</li> </ul>
+
+<script>
+  var elements = document.querySelectorAll('UL > LI:last-child') //zimame odredeni elementi
+                                        //daj mi gi site UL , vnatre vo listata zemi go samo poslednoto dete sto e LI
+  for (var i = 0; i < elements.length; i++) {
+    alert(elements[i].innerHTML)
+  }
+
+</script>

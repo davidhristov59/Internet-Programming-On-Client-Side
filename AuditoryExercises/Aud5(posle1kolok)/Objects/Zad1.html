@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script>
+
+    let student = {
+        name : "David Rayy",
+        sclass : "VI",
+        rollno : 12
+    };
+
+    function printKeys(obj){
+        let list = [];
+        for(key in obj){
+            //ke gi dodavame vo listata
+            list.push(key)
+        }
+        return list.join(",");
+    }
+
+    console.log(printKeys(student)) // VAKA AKO SAKAME VO KONZOLA DIREKT DA PECATI
+
+    //OVA VO KONZOLA KE GO NAPISEME I KE PRINTA
+    // 'name,sclass,rollno'
+
+    //2 nacin
+    // function printKeys(obj){
+    //     return Object.keys(obj).join(",");
+    // }
+
+    // printKeys(student); //prima objekt printKeys
+
+</script>
+
+<body>
+
+
+</body>
+</html>

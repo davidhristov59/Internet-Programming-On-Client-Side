@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+  function background(){
+    var element = document.getElementsByTagName("p"); //site paragrafi da gi zemem koristime
+    // getElementsByTagName koristime ako sakame da zememe nekoj tag
+
+    var element2 = document.getElementsByTagName("body")[0]; //prviot paragraf da go zeme
+    var element3 = document.getElementById("body")[1]; //vtoriot paragraf da go zeme
+
+    element.style.background = "rgb(255,0,0)";
+    // element2.style.background = "blue";
+    // element3.style.background = "black";
+  }
+</script>
+
+<input type="button" value="Click to set paragraph background color" onclick="background()">
+<p>Paragraph 1</p>
+<p>Paragraph 2</p>
+
+</body>
+</html>

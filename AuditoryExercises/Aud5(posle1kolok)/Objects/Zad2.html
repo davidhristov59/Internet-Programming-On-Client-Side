@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <script>
+    let student = {
+      name : "David Rayy",
+      sclass : "VI",
+      rollno : 12
+    };
+
+    console.log(student);
+
+    delete student.rollno;
+    console.log(student)
+
+    //VAKA AKO GO IZBRISEME PREKU IDE i samo ke se pojavi vo konzola bez toa
+    // {name: 'David Rayy', sclass: 'VI', rollno: 12}
+    // {name: 'David Rayy', sclass: 'VI'}
+
+    //VAKA VO KONZOLA direkt ako go briseme
+    // delete student.rollno
+    // true - ke vrati
+    // student - ke piseme student
+    // {name: 'David Rayy', sclass: 'VI'}
+
+    //da bide opsta funkcijata - bilo koj da izbriseme
+    // function deleteItem(key){
+    //   return delete Object(key);
+    // }
+
+    //2 NACIN
+    // function deleteItem(obj,key){
+    //   return delete obj[key];
+    // }
+
+  </script>
+
+</head>
+<body>
+
+</body>
+</html>

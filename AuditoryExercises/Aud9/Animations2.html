@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs"></script>
+
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+
+</head>
+<body>
+
+
+<div></div>
+<script>
+
+    let animation = anime({ //anime e glavnata funkcija
+
+        //sve e vo funkcijata anime
+        //vo anime definirame razlicni vrednosti sto ni ja definiraat animacijata
+
+        targets: 'div', //vo targets kazuvame koi ni se targetite
+        //mozeme i lista da navedeme, poveke od 1 target
+        translateX : 100, //translacija po x oska za 100
+        borderRadius : 50,
+        duration: 2000,
+        easing: 'linear', //linearno ke odi
+        direction: 'alternative' //vo koja nasoka ke odi animacijata
+
+    })
+
+
+</script>
+
+</body>
+</html>

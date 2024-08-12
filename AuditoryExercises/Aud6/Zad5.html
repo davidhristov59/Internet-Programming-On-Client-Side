@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script>
+
+  function union(a, b){
+
+    //proveruvame dali se nizi
+    if(!Array.isArray(a) || !Array.isArray(b)){
+      return null;
+    }
+
+    // new Set([2, 34,45,5, 55,5,5,5,5, 5,5,5])
+    // Set(5) {2, 34, 45, 5, 55}
+    //set gi trga duplikatite i gi vraka samo unikatnite elementi
+
+    //ako se nizi
+    return Array.from(new Set(a.concat(b))) //a da se spoi so b vo edna niza
+    //ke vrati pole od Set-ot od prvoto i vtoroto -
+
+  }
+
+</script>
+
+<body>
+
+
+
+</body>
+</html>

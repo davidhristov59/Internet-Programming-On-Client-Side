@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <script>
+
+    var x = prompt("Vnesi x");
+    var y = prompt("Vnesi y");
+    x = parseInt(x);
+    y = parseInt(y);
+
+    if(!isNaN(x) && !isNaN(y)){
+      if(x>0){ //prv kvadrant ako x i y se > 0
+        if(y>0){
+          console.log("1 Kvadrant");
+        }
+        else if(y < 0){ //x > 0, y<0
+          console.log("4 Kvadrant");
+        }
+        else {
+          console.log("X+"); //pozitivniot del na X-oska
+        }
+      }
+      else if(x<0){
+        if(y>0){
+          console.log("2 Kvadrant");
+        }
+        else if(y < 0){
+          console.log("3 Kvadrant");
+        }
+        else {
+          console.log("X-"); //negativniot del na X-oska
+        }
+      }
+      else {
+        alert("Vnesovte pogresen broj");
+      }
+    }
+
+
+  </script>
+
+</head>
+<body>
+
+</body>
+</html>

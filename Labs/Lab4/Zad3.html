@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+
+    label{
+      display: inline-block;
+      width: 50px;
+      margin-bottom: 20px;
+    }
+
+  </style>
+
+  <script>
+
+    function change() {
+      let colorRadio = document.getElementById("color");
+      let imageRadio = document.getElementById("image");
+      let valueText = document.getElementById("value");
+      let divChange = document.getElementById("divtochange");
+
+      if (colorRadio.checked) { //ako e cekirano color vo radio button-ot togas ...
+        divChange.style.background = valueText.value; //toj background ke bide taa boja - vrednosta
+      } else if (imageRadio.checked) { //ako e image selektirano
+        divChange.style.backgroundImage = 'url(' + valueText.value + ')';
+        divChange.style.backgroundSize = 'cover'; //za slikata da go pokrie background-ot
+      }
+    }
+
+  </script>
+
+</head>
+<body>
+
+<div id="divtochange">
+  <h1>Промена на позадина</h1>
+  <input type="radio" id="color"> <label>Color</label>
+  <input type="radio" id="image"> <label>Image</label>
+  <br>
+
+  <label>Value: </label> <input type="text" id="value"> <br>
+  <button onclick="change()">Промени</button>
+
+</div>
+
+</body>
+</html>

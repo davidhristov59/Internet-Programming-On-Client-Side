@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script>
+
+  function difference(arr1, arr2){
+
+    let result = [];
+
+    //proveri gi site elementi vo prvoto pole
+    for(let element of arr1){
+        if(!arr2.includes(element) && !result.includes(element)){
+            result.push(element);
+        }
+    }
+
+      //proveri gi site elementi vo vtoroto pole
+    for(let element of arr2) {
+        if (!arr1.includes(element) && !result.includes(element)) {
+            result.push(element);
+        }
+    }
+
+      return result;
+  }
+
+  function difference2(a, b){
+    function difference(arrA, arrB){ // !unija
+
+      let res =[];
+
+      let fa = a.flat(Infinity);
+      let fb = a.flat(Infinity);
+
+      result = fa.filter(x => !fb.includes(x));
+      result = result.concat(fb.filter(x => !fa.includes(x)))
+
+      return result;
+
+    }
+  }
+
+
+</script>
+<body>
+
+
+
+</body>
+</html>

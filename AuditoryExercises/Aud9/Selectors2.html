@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+<body>
+
+<p></p>
+<p></p>
+<p></p>
+
+<script>
+  var nums = [100,200,300];
+                                                                //ne e fiksna vrednosta, text-ot ne e fiksen
+  var paragraph = d3.select("body").selectAll("p").data(nums).text(function (d, i){
+                                                                //prima 1 po 1 podatok i ima soodveten iterator
+      console.log("d:" + d);
+      console.log("i:" + i);
+      console.log("this: " + this);
+      return d;
+  })
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!--    pravi nesto proble, ne se boojat zeleno -->
+<style>
+
+    .box {
+        border: black solid 3px;
+        height: 120px;
+        width: 120px;
+        font-size: 120px;
+        text-align: center;
+        margin: 2px;
+        color: black;
+    }
+
+</style>
+</head>
+
+<body>
+
+<script>
+    let data = '["bukva","jazik","vokal","misla","tablo"]';
+    data = JSON.parse(data);
+
+    let selectedWord = getRandomWord(data);
+
+    window.onload = function (){
+        createInputs();
+    }
+
+    function getRandomWord(wordArray){
+
+       let randomWord = Math.floor(Math.random() * wordArray.length);
+
+       return wordArray[randomWord];
+    }
+
+    function createInputs(){ //inputs
+
+        let element = document.createElement("div");
+        // element.className = "box";
+        document.body.appendChild(element);
+
+        for (let i = 0; i < 5; i++) {
+            //napravi 5 input polinja
+            let input = document.createElement("input");
+            input.className = "box";
+            input.type = 'text';
+            // input.maxLength = 1; //maximum 1 bukva mozat da primat
+
+            //koga ke kliknam enter i ako ima poveke od 2 bukvi ke mi dade alert
+            input.addEventListener("keydown", function(event){
+                if(event.key === "Enter"){
+                    checkLetters(this);
+                    checkWord();
+                }
+            })
+
+            document.body.appendChild(input);
+        }
+    }
+
+    function checkLetters(){ //proverka na site bukvi
+
+        let check = true;
+        let getInput = document.getElementsByTagName('input');
+
+        for (let i = 0; i < getInput.length; i++) { //<5
+
+            let input = getInput[i];
+
+            if(input.value.length > 1 || input.value.length < 1){
+                alert("Само 1 знак по влез на инпут, пробај повторно");
+                check = false;
+                break;
+            }
+        }
+
+        if(check){
+            checkWord();
+        }
+    }
+
+    function checkWord() {
+
+        let collectWord = "";
+        let getInputs = document.getElementsByTagName('input');
+        let correctPosition = 0;
+        let correctLetter = 0;
+
+        for (let i = 0; i < getInputs.length; i++) {
+
+            let input = getInputs[i];
+            let inputLetters = input.value.toUpperCase();
+            collectWord += inputLetters;
+
+            if (inputLetters === selectedWord[i].toUpperCase()) { //ako bukvata od vneseniot zbor e na ista pozicija so bukvata od zborot , poleto zeleno se boi
+                input.style.backgroundColor = 'green';
+                correctPosition++;
+            } else if (selectedWord.includes(inputLetters)) {
+                input.style.backgroundColor = 'yellow';
+                correctLetter++;
+            }
+        }
+
+        if (correctPosition === selectedWord.length) {
+            endGame(true);
+        }
+        else if (correctLetter === 0) {
+            for (var i = 0; i < getInputs.length; i++) {
+                getInputs[i].style.backgroundColor = "";
+            }
+            createInputs();
+        }
+
+        function endGame(isGuessed) {
+
+            if (isGuessed) {
+                let inputs = document.getElementsByTagName('input');
+                for (let i = 0; i < inputs.length; i++) {
+                    inputs[i].style.backgroundColor = 'green';
+                }
+                document.body.style.backgroundColor = 'green';
+            }
+        }
+
+    }
+
+
+
+</script>
+
+
+</body>
+</html>

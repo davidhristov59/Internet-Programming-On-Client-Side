@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<!--  Registarski Tablici-->
+
+  <style>
+
+    label{
+      width: 100px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+  </style>
+
+  <script>
+
+      function checkTablica(tablica){
+
+          //AB-1234-QW
+
+          let regex = /^[A-Z]{2}-[0-9]{4}-[A-Z]{2}$/
+
+          if(tablica.length !== 10){
+              return true;
+          }
+
+          if(regex.test(tablica)){
+              return false;
+          }
+          else {
+              return true;
+          }
+      }
+
+      function checkPrice(price){
+
+      }
+
+    function generate(){
+
+      let name = document.getElementById("ime").value;
+      let surname = document.getElementById("prezime").value;
+      let tablica = document.getElementById("regtablica").value;
+      let vozrast = document.getElementById("age").value;
+      let yes = document.getElementById("da");
+      let no = document.getElementById("ne");
+
+      if(name === "" || surname === "" || tablica === "" || vozrast === "" || yes.checked === false || no.checked === false){
+          alert("Obidete se povtorno");
+          return;
+      }
+
+        if(isNaN(vozrast.value))
+        {
+            alert("Внеси број за годините!")
+            return;
+        }
+
+        if(checkTablica(tablica.value)){
+            alert("Nevalidna reg tablica");
+            return;
+        }
+
+        let glavnaListas = document.getElementById("smetki");
+        let novDiv = document.getElementById("div");
+
+        novDiv.innerHTML += "<p>" + name + "<p>" + tablica + "<p>Soobrakajka" +
+
+    }
+
+  </script>
+
+</head>
+
+<body>
+
+
+<label>Ime</label> <input type="text" id="ime"> <br>
+<label>Prezime</label> <input type="text" id="prezime"> <br>
+<label>Registarska Tablica</label> <input type="text" id="regtablica">  <br>
+<label>Godina na vozrast</label> <input type="text" id="age"> <br>
+
+<div>
+<label>Soobrakajna nezgoda</label>
+<label style="display: inline">Da</label>
+<input type="radio" name="same" id="da">
+
+<label style="display: inline">Ne</label>
+<input type="radio" name="same" id="ne">
+</div>
+
+
+<button id="smetka" onclick="generate()"> Generiraj smetka</button>
+
+<h2>Smetki</h2>
+
+<p>Vkupno smetki za plakanje <span id="vkupno">0</span></p>
+
+<div>
+  <ul id="smetki">
+
+  </ul>
+</div>
+
+</body>
+</html>

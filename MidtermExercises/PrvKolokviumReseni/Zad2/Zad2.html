@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+
+    label{
+
+      width: 150px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    #role{
+      width: 150px;
+    }
+
+    table{
+      border-collapse: collapse;
+
+    }
+
+    td,th{
+      border: 1px solid black;
+      padding: 3px 10px;
+    }
+
+  </style>
+
+  <script>
+
+    let counter = 0;
+    function isUsernameExisting(user){
+
+      let tableRef = document.getElementById("tabela"); //ja zimam referencata na tabelata
+      let rows = tableRef.querySelector("tr"); //searches for the first occurrence of an <tr> (table row) element within the specified container
+
+      for(let i=1; i<rows.length;i++){ //odam do dolzinata na rows
+          let cell = rows[i].cells[1].innerText.valueOf(); //vo redici, cell[1] toa e username poleto, zemi go tekstot. Mozeme i bez valueOf
+          console.log(cell);
+
+          if(cell === user){
+            return true;
+          }
+      }
+      return false;
+    }
+
+    function passwordCheck2(password){
+
+      if(password.length < 10){
+        return false;
+      }
+
+      let upperCaseRegex = /[A-Z]/;
+      let numberRegex = /[0-9]/;
+      let specialCharacterRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+
+      //proveruva za site
+      if(!upperCaseRegex.test(password) || (!specialCharacterRegex.test(password) && !numberRegex.test(password))){
+        return false;
+      }
+
+      return true;
+
+    }
+    function passwordCheck(password){
+
+      let upperCaseLetterCount = 0;
+      let numberCount = 0;
+
+      for (let i = 0; i < password.length; i++) {
+
+        if(password.charAt(i) === password.charAt(i).toUpperCase() && password.isNaN(password.charAt(i))){ //na i-to mesto da vidi dali e bukvata golema i dali ima broj
+          upperCaseLetterCount++
+
+        }
+        else if(!isNaN(password.charAt(i))){
+          numberCount++;
+        }
+      }
+
+      console.log(upperCaseLetterCount);
+      console.log(numberCount);
+
+
+      // if(password.length < 10){
+      //   alert("Treba da vnesete minimum 10 karakteri za lozinka")
+      // }
+
+      if(password.length !== 10) {
+        return false;
+      }
+      else if(upperCaseLetterCount < 1){
+        return false;
+      }
+      else if(numberCount < 1){
+        return false;
+      }
+      else {
+        return true;
+      }
+
+    }
+
+
+    function updateCounter(eden){
+
+     counter += parseInt(eden);
+
+    }
+
+    function hireTeacher(teacher){
+
+      let available_Teacher = document.getElementById("available");
+      let colorized_row = teacher.parentNode.parentNode;
+      colorized_row.style.backgroundColor = 'gray';
+
+      let removeButton = teacher.parentNode.removeChild(teacher);
+      updateCounter(-1)
+      available_Teacher.innerHTML = counter;
+
+    }
+
+    function add_element(){
+
+      var user;
+
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let age = document.getElementById("age").value;
+      let username = document.getElementById("username").value;
+      let password = document.getElementById("password").value;
+      let role = document.getElementById("role").value;
+
+      let available_teachers_counter = document.getElementById("available");
+
+      let tabela = document.getElementById("tabela");
+
+      if(name === "" || email === "" || age === ""  || username === "" || password === "" || role === ""){
+
+        alert("Imate greska vo vnesuvanjeto na podatocite.Obidete se povtorno");
+        return ;
+      }
+
+      else if(isUsernameExisting(username)){ //dali postoi username-ot
+        //ako nekoj go iskoristil toj username, ne treba da se dodade noviot korisnik
+          alert("Korisnickoto ime veke postoi");
+          return;
+      }
+
+      else if(!passwordCheck2(password)){
+        alert("Nesoodveten format na lozinka");
+        return;
+      }
+
+      else if(parseInt(age) < 18 && role==="teacher"){
+        alert("Lugje pod 18 ne mozat da bidat profesori")
+        return;
+      }
+
+      if(role === "teacher"){
+        let newRow = "<tr style='background-color: lightgreen'><td>" + name + "</td><td>" + username + "</td><td>"  + email + "</td><td>"  + age  + "</td><td>" + role +  "</td><td> <button id='hire' onclick='hireTeacher(this)' value='Hire'>Hire</button></td></tr>"
+        tabela.innerHTML += newRow;
+        updateCounter(1); //za 1 da go zgolemuva counterot
+        available_teachers_counter.innerHTML = counter;
+
+      }
+      else { //ako role == student
+        let newRow = "<tr style='background-color: lightblue'><td>" + name + "</td><td>" + username + "</td><td>"  + email + "</td><td>"  + age  + "</td><td>" + role +  "</td><td style='background-color: white'></td></tr>"
+        tabela.innerHTML += newRow;
+
+      }
+
+
+
+    }
+
+  </script>
+
+</head>
+<body>
+
+<div>
+
+  <h1>Online classes</h1>
+
+  <label>Name and surname</label> <input type="text" id="name"> <br>
+  <label>Email</label> <input type="text" id="email"> <br>
+  <label>Age</label> <input type="text" id="age"> <br>
+  <label>Username</label> <input type="text" id="username"> <br>
+  <label>Password</label> <input type="text" id="password"> <br>
+  <label>Role</label>
+  <select id="role">
+    <option value="teacher">teacher</option>
+    <option value="student">student</option>
+  </select>
+
+  <br>
+  <button value="Add" onclick="add_element()" id="ADD_BTN">Add</button>
+
+
+  <p>Available teachers: <span id="available">0</span></p>
+
+  <h2>Users</h2>
+
+  <table id="tabela">
+
+    <tr>
+
+      <td>Name</td>
+      <td>Username</td>
+      <td>Email</td>
+      <td>Age</td>
+      <td>Role</td>
+      <td>Actions</td>
+
+    </tr>
+
+<!--    <tbody id="tabela">-->
+
+<!--    </tbody>-->
+
+  </table>
+
+</div>
+
+</body>
+</html>
+

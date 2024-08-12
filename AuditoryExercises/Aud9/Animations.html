@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+
+    #container {
+      height: 100px;
+      width: 100px;
+      background-color: black;
+    }
+
+  </style>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+<body>
+
+<div id="container"></div>
+
+
+<script>
+
+    d3.select("#container").transition().duration(6000).style("background-color", "yellow");
+
+</script>
+
+</body>
+</html>

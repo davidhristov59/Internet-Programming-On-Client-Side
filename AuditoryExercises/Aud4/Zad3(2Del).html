@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zad3(2 Del)</title>
+
+<!--  NE RABOTI-->
+
+  <script>
+
+    let totalCost = 0; //globalna
+
+
+    function removeRow(btn, amount){ //stavam referenca
+
+      //za da go izbrisam redot treba da dojdam DO REDOT
+      //na kopceto roditel(parent) mu e kelijata(Cell), A NA KELIJATA RODITEL(parent) mu e REDOT
+
+      let tr = btn.parentNode.parentNode; //REDOT E OVA
+      tr.parentNode.removeChild(tr);//za da go izbrisam REDOT
+
+      totalCost -= amount;
+      document.getElementById("total-cost").innerHTML = totalCost;
+
+
+    }
+
+
+    function add() {
+
+      let author = document.getElementById("author").value;
+      let project = document.getElementById("project").value;
+      let cost = document.getElementById("cost").value;
+
+      if (author === "" || project === "" || cost === "") {
+        alert("Site polinja da se popolneti")
+      }
+
+      let tableRef = document.getElementById("tbody");
+      let row = tableRef.insertRow(tableRef.rows.length); //insert a row in the table
+
+      let cell0 = row.insertCell(0);
+      let cell1 = row.insertCell(1);
+      let cell2 = row.insertCell(2);
+      let cell3 = row.insertCell(3);
+
+      //Bez value da probame ako ne sakame
+      cell0.innerHTML = author.value;
+      cell1.innerHTML = project.value;
+      cell2.innerHTML = cost.value;
+      cell2.setAttribute("class", "cost");
+
+      //Create a <button> element - KREIRAME KOPCE
+      let btn = document.createElement("BUTTON");
+
+      //Create a text node - KREIRAME TEXT KOJ STO KE SE STAI VO TOA KOPCE
+      let text = document.createTextNode("Remove");
+
+      //TOJ TEKST GO DODAVAME VO KOPCETO
+      btn.appendChild(text);
+
+      //DODAVAME ATRIBUT
+      btn.setAttribute('onclick', 'removeRow(this, $(parseInt(cost.value)))') //this ke bide elementot
+
+      cell3.appendChild(btn);
+
+
+      totalCost += parseInt(cost.value); //vrednosta soberi ja vo totalCost
+      document.getElementById("total-cost").innerHTML = totalCost; //JA AZURIRAME CENATA NA EKRANOT
+
+
+      //------------------------------------------------------------
+    }
+
+  </script>
+
+</head>
+<body>
+
+<h1>Project details</h1>
+
+<div>
+
+  <label> Author</label> <input type="text" id="author"> <br>
+  <label> Project</label> <input type="text" id="project"> <br>
+  <label> Cost</label> <input type="text" id="cost"> <br>
+
+  <input type="button" id="btn" value="Add" onclick="add()"> <br>
+
+
+  <h2>Total cost: <span id="total-cost">0.00</span></h2>
+  <table id="projects">
+
+    <thead>
+    <th>Author</th>
+    <th>Projects</th>
+    <th>Cost</th>
+    </thead>
+
+    <tbody id="tbody"></tbody>
+
+  </table>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  var a = prompt("Vnesi go prviot broj");
+  var b = prompt("Vnesi go vtoriot broj");
+
+  //dali vlezot e validen - dali korisnikot vnel broj ili tekst
+
+  a = parseInt(a);  //parsirame string vo int
+  b = parseInt(b);
+  //ako koirsnikot vnese tekst, parsiranjeto nema da pomine
+
+  //da proverime dali dvete vrednosti se broevi, dali poominalo parsiranjeto
+  //funkcija dali dadena vrednost e notANumber - vraka true or false
+
+  if(!isNaN(a) && !isNaN(b)) { //isNaN ke vrati false ako a e broj, zatoa koristime negacija za da vidime deka e broj
+    //2 true vrednosti - deka se brojki
+
+    if(a > b){
+      console.log("Maksimumot e " + a);
+    }
+    else {
+      console.log("Maksimot e " + b);
+    }
+
+  }
+  else {
+
+    console.log("Vlezot e nepravilen"); //vo konzola sakam da napisam
+  }
+
+  //pecatime vo console - vo inspect
+
+</script>
+
+
+
+</body>
+</html>

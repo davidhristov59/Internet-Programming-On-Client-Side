@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs"></script>
+
+    <style>
+        .circle{
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+
+<script>
+
+     anime({
+
+        targets: '.circle',
+        translateX : 250,
+         delay: anime.stagger(200, {start: 1000}), //stagger - kako stage-ovi gi deli
+         // delay : anime.stagger(100)
+         backgroundColor: 'blue',
+         direction: 'reverse',
+         easing: 'linear', // Add easing for smoother animation
+         // loop: true
+    });
+
+</script>
+
+</body>
+</html>

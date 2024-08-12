@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script>
+
+  function num_string_range(start, end , step){
+
+    let result = [];
+
+    if(typeof start == 'number' && typeof end == 'number'){
+      //ako se brojki
+
+      for (let i = start; i < end; i+=step) { //tolku cekori
+        result.push(i);
+      }
+
+    }
+    else if(typeof start == 'string' && typeof end == 'string'){
+      //ako se stringovi
+
+      //znacite gi zimame
+      let charStart = start.charCodeAt(0);
+      let charEnd = end.charCodeAt(0)
+
+      for (let i = charStart; i < charEnd; i+=step) {
+        result.push(String.fromCharCode(i)); //GO STAVAME CHAR-OT
+      }
+      
+    }
+    else {
+      return null;
+    }
+
+    return result;
+  }
+
+</script>
+<body>
+
+</body>
+</html>

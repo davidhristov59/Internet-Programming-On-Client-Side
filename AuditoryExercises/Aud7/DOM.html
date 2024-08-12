@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        window.onload = function (){ //obavezno koristenje window.onload vo praktika
+
+            let heading = document.createElement("h1"); //kreiram element - potocno TAG, od tip h1
+            let heading_text = document.createTextNode("BIG HEAD "); //kreiram textNode potocno text
+
+            heading.appendChild(heading_text); //ovoj text go zakacuvame na elementot h1
+            document.body.appendChild(heading) //vnatre vo body-to (pristapi do teloto na dokumentot) i zakaci go heading-ot
+            //fakticki vnatre vo body-to ni e BIG HEAD
+            /*
+             <body>
+             ...
+            </body>
+             */
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

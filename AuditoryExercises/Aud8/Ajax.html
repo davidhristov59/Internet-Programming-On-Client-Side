@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<!--  Ajax se koristi za razmena na podatoci megju klient i server i za da se pratat podatoci na nekoj server ili da se zemat -->
+<!--  XMLHTMLRequest objekt se koristi za razmena na podatoci so serverot -->
+<!--  Da se isprati baranje do serverot se koristi open() i send()-->
+  <!--Property - onreadystatechange (se izvrsuva sekogas koga ke nastapi promena na readystate funkcijata)
+    readyState funkcijata ima 4 razlicni vrednosti koi sto moze da gi primi. Preku readyState mozeme da gledame
+    do kaj e stignat nasiot request.n
+  -->
+
+  <script>
+
+    function loadXMLDoc(){
+
+      var xmlhttp;
+      if(window.XMLHttpRequest){ //proverka dali postoi ovoj objekt
+        xmlhttp = new XMLHttpRequest();
+      }
+
+      xmlhttp.onreadystatechange = function (){ //so property-to onreadystatechange monitoriramei da gi zememe nekako rezultatite
+          if(xmlhttp.readyState === 4 && xmlhttp.status === 200){
+            document.getElementById("myDiv").innerHTML = xmlhttp.responseText; //responseText ke go stavime vo innerHtml vo div
+          }
+        }
+
+      xmlhttp.open("GET", "ajax_info.txt", true); //se povikuva fcjata.
+            // Sakame da otvorime request - prviot parametar e kakov tip na request stanuva zbor - GET ILI POST
+            //Vtoriot argument e url-to koe url sakame da pristapime
+            //Posledniot parametar e true/false dali sakame sinhron ili asinhron povik
+      xmlhttp.send(); //se praka preku send()
+    }
+
+  </script>
+
+</head>
+<body>
+
+<div id="myDiv"><h2>Let Ajax change this text</h2></div>
+<button type="button" onclick="loadXMLDoc()" >Change content  </button>
+
+</body>
+</html>

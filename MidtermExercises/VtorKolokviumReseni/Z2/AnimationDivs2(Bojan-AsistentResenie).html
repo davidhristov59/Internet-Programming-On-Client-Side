@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+</head>
+<body>
+
+<script>
+  let data = '[{"color":"red", "size":"50"},{"color":"blue", "size":"40"},{"color":"orange", "size":"30"},{"color":"green", "size":"20"},{"color":"yellow", "size":"50"}]';
+  data = JSON.parse(data);
+
+  data.forEach(element => add_element(element)) //za da gi prikaze site elementi
+
+  function add_element(index){
+    let element = document.createElement("div");
+
+    element.style['backgroundColor'] = index.color;
+    element.style.width = index.size + "px";
+    element.style.height = index.size + "px";
+    element.style.position = 'absolute';
+
+    //vika na random pozicii deka treba da se
+    element.style.top = Math.floor(Math.random() * 800) + "px";
+    element.style.left = Math.floor(Math.random() * 800) + "px";
+
+    element.onclick = click_element; //na klik da se povika funkcijata
+
+    document.body.appendChild(element);
+
+  }
+
+  function click_element(event){
+
+      // console.log("clicked");
+
+      let element = event.target; //na elementot koj sto sme kliknele
+
+      //sakam razlicen direction da napravam
+      let positionX = [50, 50, -50, -50]; //4 pozicii
+      let positionY = [50, -50, 50, -50];
+
+      for (let i =0; i < 4;i++) { //sakam na 4 strani da se rasprostranuvaat kockite
+
+          let clone = element.cloneNode(true); //napravi ist takov element, kloniraj go toj element
+
+          clone.onclick = click_element; //na klik da se povika funkcijata - i NA SITE STO SME KLIKNALE DA SE RAZDVOJAT ISTO
+
+          document.body.appendChild(clone); //toj klon zalepi go vo body-to
+
+          anime({
+              targets: clone,
+              translateX: positionX[i],
+              translateY: positionY[i],
+              easing: 'linear',
+          });
+      }
+
+      //da go trgne glavniot golem kvadrat od kaj sto se razdeluvaat
+      document.body.removeChild(element);
+
+  }
+
+</script>
+
+</body>
+</html>

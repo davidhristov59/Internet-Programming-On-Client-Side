@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI</title>
+</head>
+<body>
+
+
+    <script>
+
+    var weight = prompt("Vnesi tezina vo kg: ");
+    var height = prompt("Vnesi visina vo cm: ");
+
+    function calculateBMI(weight, height){
+
+        heightInMeters = height / 100;
+        var BMI =  weight / (heightInMeters * heightInMeters);
+
+        alert("Your BMI is: " + BMI.toFixed(2)); //2 decimali
+    }
+
+</script>
+
+<button onclick="calculateBMI(weight,height)">Click here to calculate BMI</button>
+
+</body>
+</html>

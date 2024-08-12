@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+  label {
+    margin-right: 5px;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  button {
+    margin-top: 20px;
+    margin-left: 50px;
+    display: block;
+  }
+</style>
+
+<script>
+
+  let arr_item = [];
+  function showBox(){
+
+    let items = document.getElementById("items").value;
+    let boxtype = document.getElementById("type").value;
+    let result = document.getElementById("result");
+
+    if(items === "" || boxtype === ""){
+        alert("Obidete se povtorno");
+        return;
+    }
+
+    arr_item = items.split(",").map(i => i.trim()); //toa zborce sto ke go podelime so zapirka trim go , zemi go kako eden zbor
+    console.log(arr_item);
+
+    for (let i = 0; i < arr_item.length; i++) {
+      result.innerHTML += `<input type="${boxtype.toLowerCase()}" name="itemi"/><label>${arr_item[i]}</label>`;
+    }
+
+    result.innerHTML += '<br>'
+
+  }
+
+</script>
+
+<body>
+
+<div>
+<label>Items</label> <input type="text" id="items"> <br>
+<label>Type</label>
+
+<select id="type">
+  <option>Radio Button</option>
+  <option>Check Box</option>
+</select>
+
+<button onclick="showBox()">Прикажи</button>
+
+  <div id="result"></div>
+
+</div>
+
+</body>
+</html>

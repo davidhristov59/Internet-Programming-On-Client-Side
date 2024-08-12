@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://d3js.org/d3.v4.min.js"> </script>
+    <!--    D3 E MANIPULACIJA SO DOM -->
+
+</head>
+
+<body>
+
+<p id="p1">First paragraph</p>
+<p id="p2">Second paragraph</p>
+<div style="border: 1px solid "> </div>
+<p>D3</p> <input type="checkbox">
+
+<script>
+
+    d3.select("body").append("p").text("Third paragraph") //selektiraj go body-to i na body-to zakaci mu paragraf kako posleden element i vnatre vo paragrafot prikazi go toj tekst
+    d3.select("div").insert("p").text("Second paragraph"); //vo div-ot insertni Second Paragraph
+    d3.select("p").remove(); // prviot paragraf ke bide izbrisan
+    d3.select("p").html("<span>This is new inner html</span"); //sega na toj momentalno sto e prv paragraf ke go zameni so span so inner html i ke pisuva novo
+    d3.select("p").attr("class", "error");
+    d3.select("div").style("color", "red");
+
+</script>
+
+</body>
+</html>

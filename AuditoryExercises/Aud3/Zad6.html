@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  function subStrAfterChars(str,char,position){
+
+      let index = str.indexOf(char);
+
+      if(index === -1){
+          return str;
+      }
+
+      if(position === 'a'){
+          return str.substring(0,index);
+      }
+      else if(position ==='b'){
+          return str.substring(index + 1);
+      }
+      else {
+          return str;
+      }
+
+  }
+
+
+  console.log(subStrAfterChars("w3resource: JavaScript Exercises", ':','a'));
+  console.log(subStrAfterChars("w3resource: JavaScript Exercises", 'E','b'));
+
+</script>
+
+
+
+</body>
+</html>

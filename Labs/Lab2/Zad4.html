@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+    input{
+      width: 70px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    button{
+      margin-bottom: 20px;
+    }
+
+  </style>
+
+  <script>
+
+    function Add(){
+
+        let num1F = document.getElementById("firstComplex");
+        let num2F = document.getElementById("secondComplex");
+
+        let num1S = document.getElementById("firstComplex2");
+        let num2S = document.getElementById("secondComplex2");
+
+        let rez1 = document.getElementById("resultComplex");
+        let rez2 = document.getElementById("resultComplex2");
+
+        rez1.value = parseInt(num1F.value) + parseInt(num1S.value);
+        rez2.value = parseInt(num2F.value) + parseInt(num2S.value);
+
+    }
+
+  </script>
+
+</head>
+<body>
+
+<input type="number" id="firstComplex">;
+<input type="number" id="secondComplex">;
+<br>
+
+<input type="number" id="firstComplex2">
+<input type="number" id="secondComplex2">;
+<br>
+
+<button onclick="Add()" >Add</button>
+<br>
+
+<input type="number" id="resultComplex">
+<input type="number" id="resultComplex2">;
+
+</body>
+</html>

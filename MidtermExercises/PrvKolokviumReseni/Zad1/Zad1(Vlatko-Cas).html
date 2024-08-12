@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+
+    label{
+        width: 200px;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    #used{
+        position: relative;
+        left: 400px;
+        top: -87px;
+    }
+
+    #usedh2{
+        position: relative;
+        left: 500px;
+        top: -93px;
+    }
+
+    table{
+        border: 2px solid black;
+        border-collapse: collapse;
+    }
+
+    td,th{
+        border: 1px solid black;
+        padding: 3px 10px;
+    }
+
+    #usedT{
+       float: top;
+        margin-left: 500px;
+        margin-top : -95px
+    }
+
+</style>
+
+<script>
+
+    function remove(element){
+
+        element.parentNode.parentNode.style.background = 'yellow';
+        element.parentNode.removeChild(element);
+        update();
+
+    }
+
+
+
+    function update(){
+
+        let num = document.getElementsByClassName("sold"); //acess do site sto kliknale sold
+        let active = document.getElementById("active")
+        active.innerHTML = num.length;  //go updejtira brojacot tolku pati kolku sto sme klikale sold
+    }
+
+
+    function add_item(){
+
+        let name = document.getElementById("namesurname").value;
+        let item = document.getElementById("item").value;
+        let item_code = document.getElementById("itemcode").value;
+        let item_desc = document.getElementById("itemdesc").value;
+        let price = parseInt(document.getElementById("price").value);
+        let usedBTN = document.getElementById("usedBTN").value;
+        // usedBTN = usedBTN.options[usedBTN.selectedIndex].text; //od opciite , selektiraniot index, potocno toa sto sme selektirale ke go prefrli vo text
+
+        var table;
+
+        if(usedBTN === 'used'){
+            table = document.getElementById("usedT");
+        }
+        else {
+            table = document.getElementById("unusedT");
+        }
+
+        if(name && item && item_code && item_desc && price){ //ako site polinja se popolneti
+            //se dodava nov oglas vo sooddvetnata tabela dali predmetot e koristen , a polinjata ne se resetiraat
+
+            //ke go korisitme ova i fakticki ke popolni tabelata vo <td>
+            //vnatre vo <tr> pisuvame celo vreme a samo ke gi zatvarame tagovite koi sto se <td>
+            //go zatvoram edniot </>td> i otvoram drug tag <td> vo istoto " "
+            table.innerHTML += "<tr><td>" + name + "</td><td>" + item + "</td><td>" + price + "</td><td>" + item_code + "</td><td>" + item_desc + "</td><td> <button class='sold' onclick='remove(this)'>Sold</button> </td></tr>"
+
+            update();
+
+        }
+        else {
+            alert("Ne moze da se vnese");
+            return;
+        }
+
+    }
+
+</script>
+
+<body>
+
+<h1>Online shop</h1>
+
+<div>
+
+    <label>Name and surname</label> <input type="text" id="namesurname"> <br>
+    <label>Item</label> <input type="text" id="item"> <br>
+    <label>Item code</label> <input type="text" id="itemcode"> <br>
+    <label>Item description</label> <input type="text" id="itemdesc"> <br>
+    <label>Price</label> <input type="text" id="price"> <br>
+    <label>Used</label>
+    <select id="usedBTN">
+
+        <option value="used">used</option>
+        <option value="not used">not used</option>
+
+    </select>
+
+    <br>
+<!--    <input type="button" value="Add" id="btn" onclick="add()"> -->
+    <button onclick="add_item()" >Add</button>
+
+    <p>Active items : <span id="active">0</span></p>
+
+</div>
+
+<div>
+
+    <h2>Unused Items</h2>
+<table id="unusedT">
+
+    <tr>
+        <th>Name</th>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Code</th>
+        <th>Number</th>
+        <th>Actions</th>
+
+    </tr>
+
+</table>
+    </div>
+
+<div>
+    <h2 id="usedh2">Used Items</h2>
+    <table id="usedT">
+
+        <tr>
+            <th>Name</th>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Code</th>
+            <th>Number</th>
+            <th>Actions</th>
+
+        </tr>
+
+    </table>
+</div>
+
+
+
+</body>
+</html>

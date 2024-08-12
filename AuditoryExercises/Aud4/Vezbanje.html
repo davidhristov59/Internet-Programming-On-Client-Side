@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zad1</title>
+
+  <style>
+
+    label{
+      width: 100px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    #btn{
+        width: 250px;
+    }
+
+    table,td,th{
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+
+  </style>
+
+  <script>
+
+    function add(){
+
+        let author = document.getElementById("author").value;
+        let project = document.getElementById("project").value;
+        let cost = document.getElementById("cost").value;
+
+        if(author === " " || project === " " || cost === " "){
+            alert("All values are not entered")
+
+        }
+
+        let tableRef = document.getElementById("tbody");
+        let row = tableRef.insertRow(tableRef.rows.length); //insertnuva redici vo tabelata
+
+        let cell0 = row.insertCell(0);
+        let cell1 = row.insertCell(1);
+        let cell2 = row.insertCell(2);
+
+        cell0.innerHTML = author;
+        cell1.innerHTML = project;
+        cell2.innerHTML = cost;
+
+        author.value=" ";
+        project.value = " ";
+        cost.value =" ";
+
+    }
+
+  </script>
+
+</head>
+<body>
+
+<h1>Projects Details </h1>
+
+<div>
+
+  <label>Author</label> <input type="text" id="author"> <br>
+  <label>Project</label> <input type="text" id="project"> <br>
+  <label>Cost</label> <input type="text" id="cost"> <br>
+
+
+</div>
+
+<input type="button" id="btn" value="Add" onclick="add()"> <br>
+
+<h2>Project list</h2>
+
+<table id="projects">
+    <thead>
+    <th>Author</th>
+    <th>Projects</th>
+    <th>Cost</th>
+    </thead>
+
+    <tbody id="tbody"></tbody>
+
+</table>
+
+
+</body>
+</html>

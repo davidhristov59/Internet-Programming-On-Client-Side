@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Palindrom</title>
+</head>
+<body>
+
+<script>
+
+  var n = prompt("Vnesi cetiricifren broj: ");
+
+
+  if(n.length === 4){
+
+    isPalindrome();
+
+    n = parseInt(n);
+
+    var sum = calculateSumOfDigits(n);
+
+    if(n % sum === 0){
+      alert("Brojot e deliv so sumata na site cifri");
+    }
+    else
+      alert("Brojot ne e deliv so sumata na negovite cifri");
+
+  }
+  else {
+    alert("Brojot sto go vnesovte ne e cetiricifren broj")
+  }
+
+
+  function isPalindrome() {
+
+    if ((n.charAt(0) === n.charAt(3)) && (n.charAt(1) === n.charAt(2)))
+      alert("Vneseniot broj e palindrom");
+
+    else
+      alert("Vneseniot broj ne e palindrom");
+
+  }
+
+  function calculateSumOfDigits(n){
+    var sum = 0;
+    while(n > 0){
+      sum += n % 10;
+      n=Math.floor(n/10);
+    }
+    return sum;
+  }
+
+</script>
+
+
+</body>
+</html>

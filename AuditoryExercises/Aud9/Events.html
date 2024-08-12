@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <style>
+
+    div{
+      height: 100px;
+      width: 100px;
+      background-color: steelblue;
+      margin: 5px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+<div></div>
+
+<script>
+
+  d3.selectAll("div").on("mouseover", //mora da gi selektirame elementite i posle apply im pravime. Koga ke napravime hover so mausot se povika funkcijata
+          function (){
+            d3.select(this).style("background-color", "orange"); //this e elementot na koj tekovno mu ja zakacuvame funkcijata
+            // console.log(d3.event);
+            // console.log(d3.mouse(this));
+          }).on("mouseout", function (){ //koga ke go trgneme hover-ot selektiraj go tekovniot element i vrati ja nazad bojata
+    d3.select(this).style("background-color", "steelblue");
+  });
+
+</script>
+
+
+</body>
+</html>

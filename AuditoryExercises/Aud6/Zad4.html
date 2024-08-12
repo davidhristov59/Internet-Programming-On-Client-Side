@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+
+
+</style>
+
+<script>
+
+  let arr = [];
+  function add(){
+
+    arr.push(document.getElementById("num").value); //vnesuvame vo nizata vnatre
+  }
+
+  function display(){ //bolje opcija
+
+    let result = document.getElementById("result");
+    let content = "";
+    for (let i = 0; i < arr.length; i++) {
+
+      content += "Element" + " " + i + " " + arr[i] + '<br>'
+    }
+
+      result.innerHTML = content; //vnesi go contentot sto go dododavme vnatre vo Html preku innerHtml
+  }
+
+  function display2(){
+
+    let result = document.getElementById("result");
+
+    for (let i = 0; i < arr.length; i++) {
+
+      let element = document.createElement("span");
+      element.textContent = "Element" + " " + i + " " + arr[i] + '<br>'; //stavame sodrzina vo nizata so textContent
+      result.append(element);
+
+      let br = document.createElement("br");
+      result.append("br");
+    }
+
+  }
+
+</script>
+<body>
+
+<input type="text" id="num">
+<button onclick="add()" value="Add">Add</button>
+<button onclick="display()" value="Display">Display</button>
+
+<div id="result">
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset=utf-8 />
+  <title>Title</title>
+</head>
+
+<script>
+
+  function removecolor(){
+
+    var selectedElement = document.getElementById("colorSelect");
+    var selectedValue = selectedElement.value;
+
+    if(selectedValue){
+      console.log("Selected color: ", selectedValue);
+    }
+
+    for (let i = 0; i < selectedElement.options.length; i++) {
+      if(selectedElement.options[i].value === selectedValue){
+        selectedElement.remove(i);
+        break;
+      }
+    }
+  }
+
+  //2 NACIN
+  // function removecolor2() {
+  //   var colorSelect = document.getElementById("colorSelect");
+  //   colorSelect.remove(colorSelect.selectedIndex);
+  // }
+
+</script>
+
+<body>
+
+<form>
+  <select id="colorSelect">
+    <option>Red</option>
+    <option>Green</option>
+    <option>White</option>
+    <option>Black</option>
+  </select>
+  <input type="button" onclick="removecolor()"
+         value="Select and Remove"><br>
+</form>
+
+</body>
+</html>

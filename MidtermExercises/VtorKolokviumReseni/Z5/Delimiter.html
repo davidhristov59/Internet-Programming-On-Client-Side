@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script>
+
+  function draw(){
+
+    let colors = document.getElementById("colortext").value;
+    let delimiter = document.getElementById("delimitertext").value;
+
+    let arrayColors = colors.split(delimiter);
+    let here = document.getElementById("here"); //ke gi podeli spored toa ssto ke vneseme vo delimiter
+
+    for (let i = 0; i < arrayColors.length; i++) {
+
+      let element = document.createElement("div");
+      element.style.backgroundColor = arrayColors[i];
+      element.style.width = "50px";
+      element.style.height = "50px";
+      element.style.float = 'left'; //ZA DA BIDAT HORIZONTALNO
+
+      element.setAttribute('onclick', 'removeElement(this)');
+
+      here.appendChild(element);
+
+    }
+  }
+
+  function removeElement(elem){
+
+      let children = elem.parentNode.children;
+      elem.remove();
+      let txt = "";
+
+      for (let i = 0; i < children.length; i++) {
+          txt += children[i].style.backgroundColor + document.getElementById("delimitertext").value;
+      }
+
+      document.getElementById("colortext").value = txt;
+      // document.getElementById("colortext").innerText = txt;
+  }
+
+
+</script>
+
+<body>
+
+<p id="colors">Colors</p>
+<input type="text" id="colortext">
+<br>
+
+<p>Delimiter</p>
+<input type="text" id="delimitertext">
+<br>
+
+<br>
+<input type="button" value="Draw" onclick="draw()">
+
+<div id="here">
+
+</div>
+
+</body>
+</html>

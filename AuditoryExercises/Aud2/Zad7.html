@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>Title</p>
+<p>Insert Radius</p>
+<input type="number" id="radius">
+<p>Volume: </p>
+<input type="number" id="volumen">
+<button onclick="calculateVolume()">Calculate</button>
+
+<script>
+
+
+  function calculateVolume() {
+    var rad = document.getElementById("radius");
+    rad = rad.value; //od input vrednosta da ja procitame vrednosta
+
+    var vol = 4/3*rad*rad*rad*3.14;
+
+    var v_element = document.getElementById("volumen");
+    v_element.value = vol;
+
+    //mora da parsirame vo int
+  }
+
+  
+
+
+
+</script>
+
+</body>
+</html>

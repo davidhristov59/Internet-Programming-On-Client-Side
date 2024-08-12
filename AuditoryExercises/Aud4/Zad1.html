@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        label{
+            width: 100px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <script>
+
+        function send(){
+            //da gi zememe site raboti sto se vneseni
+
+            let name = document.getElementById("name").value;
+            let surname = document.getElementById("surname").value;
+            let email = document.getElementById("email").value;
+            let age = document.getElementById("age").value;
+
+            if(name === " " || surname === " " || email === " " || age === " "){ //ako bilo koi od ovie se prazni
+                alert("Site polinja mora da se popolneti")
+            }
+            else {
+                let msg = "Dear " + name + " " + surname + "dali ste sigurni ?";
+
+                if(confirm(msg)){
+                    document.getElementById("message").value = "Podatocite se uspesno isprateni"
+                }
+                else {
+                    alert("Vasite podatoci ne se isprateni")
+                }
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+<h1>Форма за Контакт</h1>
+
+<div>
+
+    <label>Име  </label> <input type="text" id="name" > <br>
+    <label>Презиме  </label>  <input type="text" id="surname"> <br>
+    <label>E-mail  </label> <input type="text" id="email"> <br>
+    <label>Возраст  </label>
+
+    <select id="age">
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+    </select>
+
+</div>
+
+<input type="button" id="btn" value="Прати" onclick="send()">
+
+<input type="text" id="message" disabled="disabled">
+
+
+</body>
+</html>

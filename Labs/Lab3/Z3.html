@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <script>
+
+    class Cylinder{
+
+      radius;
+      height;
+
+      calculateVolume(){
+        return (Math.PI*this.radius*this.radius*this.height).toFixed(2);
+      }
+
+      constructor(radius,  height){
+        this.height = height;
+        this.radius = radius;
+      }
+
+    }
+
+    let cyl = new Cylinder(5.3,6);
+    let cyl2 = new Cylinder(10, 16);
+    let cyl3 = new Cylinder(7.8,4);
+
+    console.log(cyl.calculateVolume());
+    console.log(cyl2.calculateVolume());
+    console.log(cyl3.calculateVolume());
+
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

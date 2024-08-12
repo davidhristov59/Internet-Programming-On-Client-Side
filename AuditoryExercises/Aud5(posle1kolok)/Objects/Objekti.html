@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <script>
+    function Person(first, last, age, eyecolor){
+
+      this.firstName = first;
+      this.lastName = last;
+      this.age = age;
+      this.eyeColor = eyecolor;
+      this.name = function () {
+        return this.firstName + " " + this.lastName;
+      };
+    }
+
+    let person = new Person("John", "Doe", 50, "blue")
+console.log(person);
+
+
+    //Dodavanje na nov atribut
+  person.nationality = "English";
+  Person.getAge = function (){
+    return this.age;
+  }
+
+  console.log(person)
+
+  </script>
+
+
+</head>
+<body>
+
+<!--Pristap do atributi na objektot-->
+<!--objectName.propertyName-->
+<!--или-->
+<!--objectName[“propertyName”]-->
+
+<!--Пристап до методите на објектот-->
+<!--objectName.methodName()-->
+
+
+
+</body>
+</html>

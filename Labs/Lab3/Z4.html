@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script>
+
+    class Book{
+
+      title;
+      author;
+      alreadyRead;
+
+      constructor(title, author, alreadyRead) {
+        this.title = title;
+        this.author = author;
+        this.alreadyRead = alreadyRead;
+      }
+
+    }
+
+    //gi stava, novite objekti vo niza  za polesna manipulacija
+    let books = [new Book("The Hobbit", "J.R.R. Tolkien", true),
+      new Book("The Lord of the Rings", "J.R.R. Tolkien", false)]
+
+
+    for (let i = 0; i < books.length; i++) {
+
+      let book = books[i]; //moram da imam pristap
+
+        if(book.alreadyRead === true){
+          console.log("You already read " + book.title + " by " + book.author);
+        }
+        else {
+          console.log("You still need to read " + book.title + " by " + book.author);
+        }
+    }
+
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

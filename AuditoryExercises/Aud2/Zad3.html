@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  // href, hreflang, rel, target, и type ke gi ispecati
+  function getAttributes(){
+
+    var h = document.getElementById("finki").href;
+    console.log('The value of the href link is ' + h);
+
+    var u = document.getElementById("finki").hreflang;
+    console.log("The value of the hreflink is" + u);
+
+    var y = document.getElementById("finki").rel;
+    console.log("The value of the hreflink is" + y);
+
+    var x = document.getElementById("finki").target;
+    console.log("The value of the hreflink is" + x);
+
+    var r = document.getElementById("finki").type;
+    console.log("The value of the hreflink is" + r);
+
+  }
+
+</script>
+
+<p><a id="finki" type="text/html" hreflang="en- us" rel="nofollow" target="_self" href="http://www.w3 resource.com/">finki</a></p>
+<button onclick="getAttributes()">Click here to get attributes value</button>
+
+</body>
+</html>

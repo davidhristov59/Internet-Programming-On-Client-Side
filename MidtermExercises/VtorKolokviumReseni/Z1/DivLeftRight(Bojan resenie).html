@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="<" onclick="moveLeft()">
+<input type="button" value=">" onclick="moveRight()">
+
+<script>
+
+    let data = '[{"background-color":"red", "width":"100px", "height":"100px"}, ' +
+        '{"background-color":"green", "width":"50px", "height":"100px"}, ' +
+        '{"background-color":"blue", "width":"100px", "height":"50px"}]';
+    data = JSON.parse(data);
+
+    let element = document.createElement('div');
+
+    // element.style.backgroundColor = data[0]['background-color'];
+    // element.style.width = data[0].width;
+    // element.style.height = data[0].height;
+    // element.style.position = 'absolute';
+    //
+    // document.body.appendChild(element);
+
+    let idx = 0;
+
+    add_element(data[idx]);
+    // add_element(data[0])
+
+    //oznacuva koja mu e pozicijata za style left
+    element['left'] = 0;
+
+    function add_element(index){
+
+        element.style.backgroundColor = index['background-color'];
+        element.style.width = index['width'];
+        element.style.height = index['height'];
+        element.style.position = 'absolute';
+
+        // element.style.width = index.width;
+        // element.style.height = index.height;
+
+        document.body.appendChild(element);
+    }
+
+    function moveRight() {
+
+        inter = setInterval(animMoveRight, 10); //ke go dvizi dvizenjeto za 10 sekundi
+    }
+
+    function moveLeft() {
+        inter2 = setInterval(animMoveLeft, 10);
+    }
+
+    function animMoveRight(){
+
+        element['left'] ++;
+        element.style.left = element['left'] + "px"; //postavi kako pozicija
+
+        //----------------------------------------------------------------
+
+        if(element['left'] > 300){
+            //treba da zavrsi animacijata
+            idx--;
+
+            if(idx < 0){
+                idx = data.length - 1;
+            }
+
+            add_element(data[idx]);
+            element['left'] = 150;
+            element.style.left = element['left'] + "px";
+        }
+
+        if(element['left'] === 0){
+            clearInterval(inter)
+        }
+
+    }
+
+    function animMoveLeft(){
+
+        element['left'] --; //dekrement
+        element.style.left = element['left'] + "px";
+
+        //----------------------------------------------------------------
+
+        //sve pravi naopaku
+
+        if(element['left'] < -150){
+            idx++;
+
+            if(idx > data.length){
+                idx = 0; //daj mu go prviot element
+            }
+
+            add_element(data[idx]);
+            element['left'] = 300;
+            element.style.left = element['left'] + "px";
+
+        }
+
+        if(element['left'] === 0){
+            clearInterval(inter);
+        }
+
+    }
+
+
+</script>
+
+</body>
+</html>

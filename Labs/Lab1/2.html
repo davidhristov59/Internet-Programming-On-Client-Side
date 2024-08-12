@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Operatori</title>
+</head>
+<body>
+
+<script>
+
+    var number = prompt("Vnesete telefonski broj");
+
+    if(number.length === 9){
+        var first3 = number.substring(0,3);
+        var middle3 = number.substring(3,6);
+        var last3 = number.substring(6,9);
+
+        //mora brojkite da gi cuvame vo ' ' inaku dava undefined za operatorot
+        var operator;
+        if(first3.charAt(2) === '0' || first3.charAt(2) === '1'  || first3.charAt(2) === '2'){ //070,071, 072
+             operator = "T-mobile";
+        }
+        else if(first3.charAt(2) === '5' || first3.charAt(2) === '6' ){ //075, 076
+                operator = "ONE";
+        }
+        else if(first3.charAt(2) === '7' || first3.charAt(2) === '8' ){ //077, 078
+            operator = "VIP";
+        }
+        alert(first3 + "/" + middle3 + "-" + last3 + " - " + operator);
+    }
+    else {
+        alert("Brojot koj sto go vnesovte e nevaliden");
+    }
+
+</script>
+
+</body>
+</html>

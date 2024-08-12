@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<!--  Да се напише JavaScript функција која крати стринг ако има-->
+<!--  повеќе од одреден број на знаци. Скратените стрингови ќе-->
+<!--  завршуваат со „...“ или со друг специфициран стринг-->
+</head>
+<body>
+
+<script>
+
+  function text_Truncate(str,length,ending){
+
+    if(length === undefined){ //ako nema dolzina, vrati go stringot kako sto e
+      return str;
+    }
+
+    if(ending === undefined){ //ako krajot e nedefiniran
+        ending = "..."; //ke zavrsuva vaka skrateniot string
+    }
+
+    if(str.length > length){
+      return str.substring(0, length - ending.length) + ending;
+    }
+
+    return str;
+  }
+
+</script>
+
+</body>
+</html>

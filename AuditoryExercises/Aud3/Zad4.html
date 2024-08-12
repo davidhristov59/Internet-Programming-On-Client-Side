@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<!--    Да се напише JavaScript функција која вметнува стринг во друг-->
+<!--    стринг на одредена позиција-->
+</head>
+<body>
+
+<script>
+
+    console.log(insertString('We are doing some exercises.'));
+    console.log(insertString('We are doing some exercises.', 'JavaScript '));
+    console.log(insertString('We are doing some exercises.', 'JavaScript ', 18));
+    function insertString(main_string, ins_string, position){
+
+        if(position === undefined){
+            return 0;
+        }
+
+        if(ins_string === undefined){
+            return main_string;
+        }
+
+        return main_string.slice(0,position) + main_string + main_string.slice(position)
+    }
+
+</script>
+
+</body>
+</html>
